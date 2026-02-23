@@ -32,8 +32,8 @@ System instructions:
 
 ### 1) Prerequisites
 
-- Python 3.10+ (recommended)
-- `pip`
+- Python 3.10+ (recommended) (https://www.python.org/downloads/)
+- `pip` (automatically installed with Python)
 - Internet connection
 - Hugging Face token (https://huggingface.co/docs/hub/en/security-tokens) 
 
