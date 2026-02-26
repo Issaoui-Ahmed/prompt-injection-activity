@@ -17,6 +17,8 @@ def init_state() -> None:
             st.session_state.messages_used = 0
     if "turns" not in st.session_state:
         st.session_state.turns = []
+    if "hint_index" not in st.session_state:
+        st.session_state.hint_index = -1
     if "uploader_nonce" not in st.session_state:
         st.session_state.uploader_nonce = 0
     legacy_difficulty = st.session_state.get("difficulty")
@@ -43,6 +45,7 @@ def get_selected_model_name() -> str:
 def reset_round(keep_uploaded_file: bool) -> None:
     st.session_state.messages_used = 0
     st.session_state.turns = []
+    st.session_state.hint_index = -1
 
     if not keep_uploaded_file:
         st.session_state.uploaded_text = ""
