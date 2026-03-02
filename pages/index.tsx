@@ -323,11 +323,13 @@ export default function HomePage() {
 
             <section className="panel">
               <h3>How to get a Hugging Face token</h3>
-              <p className="micro">1) Sign in (or create an account) at Hugging Face.</p>
-              <p className="micro">2) Open Settings -&gt; Access Tokens.</p>
-              <p className="micro">3) Create a token with Read permission and copy it.</p>
               <p className="micro">
-                4) Paste it into the Hugging Face Token field during Round Setup.
+                Sign up for a Hugging Face account (you will need to verify your
+                email).
+              </p>
+              <p className="micro">Sign in to your Hugging Face account.</p>
+              <p className="micro">
+                Open Settings (click profile icon on top right) -&gt; Access Token.
               </p>
               <p className="micro">
                 Help page:{" "}

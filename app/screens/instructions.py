@@ -26,10 +26,9 @@ def render_instructions_screen() -> None:
         """
 <div class="panel">
   <h3>How to get a Hugging Face token</h3>
-  <p class="micro">1) Sign in (or create an account) at Hugging Face.</p>
-  <p class="micro">2) Open Settings -> Access Tokens.</p>
-  <p class="micro">3) Create a token with Read permission and copy it.</p>
-  <p class="micro">4) In PowerShell, run: <code>$env:HF_TOKEN="hf_..."</code> before launching the app.</p>
+  <p class="micro">Sign up for a Hugging Face account (you will need to verify your email).</p>
+  <p class="micro">Sign in to your Hugging Face account.</p>
+  <p class="micro">Open Settings (click profile icon on top right) -> Access Token.</p>
   <p class="micro">Help page: <a href="https://huggingface.co/docs/hub/en/security-tokens" target="_blank">Hugging Face access token docs</a></p>
 </div>
         """,
