@@ -9,7 +9,7 @@ DIFFICULTY_OPTIONS = ["easy", "medium", "difficult"]
 DEFAULT_DIFFICULTY = "easy"
 
 PAGE_CONFIG = {
-    "page_title": "Prompt Shield Arena",
+    "page_title": "Prompt Resilience Lab",
     "page_icon": ":shield:",
     "layout": "wide",
     "initial_sidebar_state": "collapsed",

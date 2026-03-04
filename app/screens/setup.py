@@ -10,15 +10,15 @@ from app.utils import decode_text_file
 
 def render_setup_screen() -> None:
     render_hero(
-        "Round Setup",
-        "Red Team uploads the Blue Team defense file and starts the arena.",
+        "Experiment Setup",
+        "Load the active prompt file, choose a model, and begin testing.",
     )
 
     st.markdown(
         """
 <div class="panel">
-  <h3>Upload Blue Team .txt file</h3>
-  <p class="micro">This file is used as the model system prompt for the full round.</p>
+  <h3>Upload system prompt .txt file</h3>
+  <p class="micro">This file becomes the model system message for the current trial.</p>
 </div>
         """,
         unsafe_allow_html=True,
@@ -42,7 +42,7 @@ def render_setup_screen() -> None:
 
     uploader_key = f"blue_file_{st.session_state.uploader_nonce}"
     uploaded = st.file_uploader(
-        "Choose a text file",
+        "Choose a prompt file",
         type=["txt"],
         key=uploader_key,
     )
@@ -51,13 +51,13 @@ def render_setup_screen() -> None:
         st.session_state.uploaded_name = uploaded.name
 
     if st.session_state.uploaded_text:
-        st.success(f"Loaded {st.session_state.uploaded_name}")
+        st.success(f"Loaded prompt file: {st.session_state.uploaded_name}")
 
         start_col, back_col = st.columns(2)
         with start_col:
-            start_arena = st.button("Enter Attack Arena", type="primary", use_container_width=True)
+            start_arena = st.button("Enter Exploration Lab", type="primary", use_container_width=True)
         with back_col:
-            back_to_instructions = st.button("Back to Instructions", use_container_width=True)
+            back_to_instructions = st.button("Back to Activity Guide", use_container_width=True)
 
         if start_arena:
             st.session_state.selected_difficulty = st.session_state.get("difficulty_input", DEFAULT_DIFFICULTY)
@@ -69,8 +69,8 @@ def render_setup_screen() -> None:
             st.session_state.stage = "instructions"
             st.rerun()
     else:
-        st.info("Upload a .txt file to continue.")
-        back_clicked = st.button("Back to Instructions", use_container_width=True)
+        st.info("Upload a .txt prompt file to continue.")
+        back_clicked = st.button("Back to Activity Guide", use_container_width=True)
         if back_clicked:
             st.session_state.stage = "instructions"
             st.rerun()

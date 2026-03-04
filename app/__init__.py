@@ -1,1 +1,1 @@
-"""Prompt Shield Arena application package."""
+"""Prompt Resilience Lab application package."""

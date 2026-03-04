@@ -1,1 +1,1 @@
-"""UI helpers for Prompt Shield Arena."""
+"""UI helpers for Prompt Resilience Lab."""

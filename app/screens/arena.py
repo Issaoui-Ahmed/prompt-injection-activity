@@ -6,7 +6,7 @@ from app.inference import run_inference
 from app.state import get_selected_difficulty, get_selected_model_name, reset_round
 from app.ui.components import render_hero
 
-RED_TEAM_HINTS = [
+TECHNIQUE_HINTS = [
     "Prompted persona switches. It's often useful to have the LLM adopt a persona in the prompt template to tailor its responses for a specific domain or use case (for example, including \"You are a financial analyst\" before prompting an LLM to report on corporate earnings). This type of attack attempts to have the LLM adopt a new persona that might be malicious and provocative.",
     "Extracting the prompt template. In this type of attack, an LLM is asked to print out all of its instructions from the prompt template. This risks opening up the model to further attacks that specifically target any exposed vulnerabilities. For example, if the prompt template contains a specific XML tagging structure, a malicious user might attempt to spoof these tags and insert their own harmful instructions.",
     "Ignoring the prompt template. This general attack consists of a request to ignore the model's given instructions. For example, if a prompt template specifies that an LLM should answer questions only about the weather, a user might ask the model to ignore that instruction and to provide information on a harmful topic.",
@@ -27,8 +27,8 @@ def render_arena_screen() -> None:
         st.rerun()
 
     render_hero(
-        "Attack Arena",
-        f"Target file: {st.session_state.uploaded_name}",
+        "Exploration Lab",
+        f"Current prompt file: {st.session_state.uploaded_name}",
     )
 
     selected_difficulty = get_selected_difficulty()
@@ -52,11 +52,13 @@ def render_arena_screen() -> None:
     )
     reset_col, change_col, hint_col = st.columns(3)
     with reset_col:
-        reset_clicked = st.button("Restart Conversation", use_container_width=True)
+        reset_clicked = st.button("Restart Trial", use_container_width=True)
     with change_col:
-        new_file_clicked = st.button("Load New File", use_container_width=True)
+        new_file_clicked = st.button("Load New Prompt File", use_container_width=True)
     with hint_col:
-        hint_label = "Reveal Hint" if st.session_state.hint_index < 0 else "Next Hint"
+        hint_label = (
+            "Reveal Technique" if st.session_state.hint_index < 0 else "Next Technique"
+        )
         hint_clicked = st.button(hint_label, use_container_width=True)
 
     if reset_clicked:
@@ -69,18 +71,20 @@ def render_arena_screen() -> None:
         st.rerun()
 
     if hint_clicked:
-        st.session_state.hint_index = (st.session_state.hint_index + 1) % len(RED_TEAM_HINTS)
+        st.session_state.hint_index = (st.session_state.hint_index + 1) % len(
+            TECHNIQUE_HINTS
+        )
 
-    st.markdown("### Red Team Hint")
+    st.markdown("### Technique Hint")
     if st.session_state.hint_index < 0:
-        st.info('Press "Reveal Hint" to get a jailbreak technique.')
+        st.info('Press "Reveal Technique" to get a jailbreak approach.')
     else:
-        st.caption(f"Technique {st.session_state.hint_index + 1}/{len(RED_TEAM_HINTS)}")
-        st.info(RED_TEAM_HINTS[st.session_state.hint_index])
+        st.caption(f"Technique {st.session_state.hint_index + 1}/{len(TECHNIQUE_HINTS)}")
+        st.info(TECHNIQUE_HINTS[st.session_state.hint_index])
 
-    st.markdown("### Live Conversation")
+    st.markdown("### Experiment Conversation")
     if not st.session_state.turns:
-        st.info("No messages yet. Start the chat below.")
+        st.info("No messages yet. Send a test prompt below.")
     else:
         for turn in st.session_state.turns:
             with st.chat_message("user"):
@@ -90,19 +94,23 @@ def render_arena_screen() -> None:
 
     with st.form("attack_prompt_form", clear_on_submit=True):
         prompt = st.text_area(
-            "Attack prompt",
-            placeholder="Send a red-team message...",
+            "Test prompt",
+            placeholder="Send an experiment prompt...",
             height=120,
             label_visibility="collapsed",
         )
-        submitted = st.form_submit_button("Send", use_container_width=True, type="primary")
+        submitted = st.form_submit_button(
+            "Send Prompt",
+            use_container_width=True,
+            type="primary",
+        )
 
     if submitted:
         if not prompt.strip():
             st.warning("Write a message before sending.")
             return
 
-        with st.spinner("Executing attack against model..."):
+        with st.spinner("Running test against model..."):
             try:
                 response = run_inference(
                     file_text=st.session_state.uploaded_text,

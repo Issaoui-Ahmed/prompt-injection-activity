@@ -8,8 +8,8 @@ def render_hero(title: str, subtitle: str) -> None:
   <h1>{title}</h1>
   <p>{subtitle}</p>
   <div class="chip-row">
-    <span class="chip chip-blue">Blue Team: defend</span>
-    <span class="chip chip-red">Red Team: jailbreak</span>
+    <span class="chip chip-blue">Blue Team: prompt design</span>
+    <span class="chip chip-red">Red Team: jailbreak testing</span>
   </div>
 </div>
         """,
