@@ -17,7 +17,7 @@ def render_instructions_screen() -> None:
   <p class="micro">2) Red Team probes the model with jailbreak strategies and tracks what the model reveals.</p>
   <p class="micro">3) Blue Team revises the prompt with stronger instructions, then the teams rerun tests.</p>
   <p class="micro">4) Repeat across multiple turns and difficulty levels to compare model behavior.</p>
-  <p class="micro">5) For grading, capture a screenshot of the app evidence and submit it in Brightspace.</p>
+  <p class="micro">5) For grading, submit a short reflection in Brightspace about insights gained from different jailbreak techniques, defense techniques, and how different models react.</p>
 </div>
         """,
         unsafe_allow_html=True,

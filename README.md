@@ -10,7 +10,7 @@ This is not framed as a single win/lose contest. The goal is to run experiments,
 - Red Team tests jailbreak and prompt-injection strategies against that file.
 - Blue Team strengthens the instructions and reruns tests.
 - Both teams document what changed and how the model reacted.
-- For grading, capture app screenshots that show your experiment evidence and submit them in Brightspace.
+- For grading, submit a short reflection in Brightspace describing insights gained about different jailbreak techniques, different defense techniques, and how different models reacted to them.
 
 ## Suggested Prompt Progression
 
@@ -86,7 +86,7 @@ npm.cmd run start
 6. Click **Enter Exploration Lab**.
 7. Send iterative test prompts and review model replies.
 8. Revise the prompt file and run another trial.
-9. Capture screenshots of your evidence and submit them in Brightspace.
+9. Submit a short reflection in Brightspace describing what you learned about jailbreak techniques, defense techniques, and model behavior differences.
 
 ## Streamlit App
 
@@ -128,7 +128,7 @@ Then open the local URL shown in the terminal (usually `http://localhost:8501`).
 5. Click **Enter Exploration Lab**.
 6. Send test prompts and inspect responses.
 7. Modify the prompt file and repeat trials.
-8. Capture screenshots of your results and submit them in Brightspace.
+8. Submit a short reflection in Brightspace describing what you learned about jailbreak techniques, defense techniques, and model behavior differences.
 
 ## Experiment Ideas
 

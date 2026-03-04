@@ -322,8 +322,9 @@ export default function HomePage() {
                 behavior.
               </p>
               <p className="micro">
-                5) For grading, capture a screenshot of the app evidence and submit it
-                in Brightspace.
+                5) For grading, submit a short reflection in Brightspace about
+                insights gained from different jailbreak techniques, defense
+                techniques, and how different models react.
               </p>
             </article>
 
